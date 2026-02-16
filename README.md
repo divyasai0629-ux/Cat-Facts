@@ -1,5 +1,5 @@
 🐾 Cat Facts & Currency Converter: An API-Powered Web App
-Check out the live deployment here: Live Demo
+Check out the live deployment here: https://divyasai0629-ux.github.io/Cat-Facts/
 
 🌟 Overview
 
