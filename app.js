@@ -1,26 +1,26 @@
 const URL = "https://catfact.ninja/fact";
-
-const factpara = document.querySelector("#fact");
+const factPara = document.querySelector("#fact");
 const btn = document.querySelector("#btn");
 
-const getfacts = async () => {
-    let response =await fetch(URL);
-    console.log(response);
-    let data = await response.json();
-    factpara.innerText = data.fact;
-
+const getFacts = async () => {
+    // Add a simple fade-out effect
+    factPara.style.opacity = 0;
+    
+    try {
+        let response = await fetch(URL);
+        let data = await response.json();
+        
+        // Update text and fade back in
+        setTimeout(() => {
+            factPara.innerText = data.fact;
+            factPara.style.opacity = 1;
+            factPara.style.transition = "opacity 0.5s ease";
+        }, 200);
+        
+    } catch (error) {
+        factPara.innerText = "Oops! Failed to fetch a cat fact. Try again.";
+        factPara.style.opacity = 1;
+    }
 };
-btn.addEventListener("click", getfacts);
 
-// using promies
-
-// function getfacts() {
-//     fetch(URL)
-//         .then((response) => {
-//             return response.json();
-//         }).then((data) => {
-//             console.log(data);
-//             factpara.innerText = data.fact;
-//          }
-//         )
-// }
+btn.addEventListener("click", getFacts);
